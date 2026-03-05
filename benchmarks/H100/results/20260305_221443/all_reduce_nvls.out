@@ -1,0 +1,37 @@
+# nccl-tests version 2.17.9 nccl-headers=22602 nccl-library=22602
+# Collective test starting: all_reduce_perf
+# nThread 1 nGpus 8 minBytes 1048576 maxBytes 8589934592 step: 2(factor) warmup iters: 5 iters: 20 agg iters: 1 validation: 1 graph: 0
+#
+# Using devices
+#  Rank  0 Group  0 Pid 1602244 on gpu-dp-2jvzl-pqq7p device  0 [0000:29:00] NVIDIA H100 80GB HBM3
+#  Rank  1 Group  0 Pid 1602244 on gpu-dp-2jvzl-pqq7p device  1 [0000:2f:00] NVIDIA H100 80GB HBM3
+#  Rank  2 Group  0 Pid 1602244 on gpu-dp-2jvzl-pqq7p device  2 [0000:35:00] NVIDIA H100 80GB HBM3
+#  Rank  3 Group  0 Pid 1602244 on gpu-dp-2jvzl-pqq7p device  3 [0000:3b:00] NVIDIA H100 80GB HBM3
+#  Rank  4 Group  0 Pid 1602244 on gpu-dp-2jvzl-pqq7p device  4 [0000:43:00] NVIDIA H100 80GB HBM3
+#  Rank  5 Group  0 Pid 1602244 on gpu-dp-2jvzl-pqq7p device  5 [0000:49:00] NVIDIA H100 80GB HBM3
+#  Rank  6 Group  0 Pid 1602244 on gpu-dp-2jvzl-pqq7p device  6 [0000:4f:00] NVIDIA H100 80GB HBM3
+#  Rank  7 Group  0 Pid 1602244 on gpu-dp-2jvzl-pqq7p device  7 [0000:55:00] NVIDIA H100 80GB HBM3
+#
+#                                                              out-of-place                       in-place          
+#       size         count      type   redop    root     time   algbw   busbw  #wrong     time   algbw   busbw  #wrong 
+#        (B)    (elements)                               (us)  (GB/s)  (GB/s)             (us)  (GB/s)  (GB/s)         
+     1048576        262144     float     sum      -1    42.30   24.79   43.38       0    41.42   25.32   44.31       0
+     2097152        524288     float     sum      -1    43.83   47.85   83.73       0    44.16   47.49   83.11       0
+     4194304       1048576     float     sum      -1    56.02   74.88  131.03       0    55.25   75.91  132.85       0
+     8388608       2097152     float     sum      -1    84.88   98.83  172.95       0    84.51   99.27  173.71       0
+    16777216       4194304     float     sum      -1   125.51  133.67  233.92       0   125.18  134.02  234.54       0
+    33554432       8388608     float     sum      -1   200.26  167.55  293.22       0   200.26  167.56  293.22       0
+    67108864      16777216     float     sum      -1   327.16  205.13  358.97       0   327.00  205.23  359.15       0
+   134217728      33554432     float     sum      -1   588.70  227.99  398.98       0   587.17  228.58  400.02       0
+   268435456      67108864     float     sum      -1  1113.76  241.02  421.78       0  1113.43  241.09  421.90       0
+   536870912     134217728     float     sum      -1  2149.77  249.73  437.03       0  2151.67  249.51  436.65       0
+  1073741824     268435456     float     sum      -1  4017.07  267.29  467.77       0  4032.34  266.28  465.99       0
+  2147483648     536870912     float     sum      -1  7947.93  270.19  472.84       0  7957.82  269.86  472.25       0
+  4294967296    1073741824     float     sum      -1  15757.4  272.57  477.00       0  15760.6  272.51  476.90       0
+  8589934592    2147483648     float     sum      -1  31342.8  274.06  479.61       0  31397.1  273.59  478.78       0
+# Out of bounds values : 0 OK
+# Avg bus bandwidth    : 319.486 
+#
+# Collective test concluded: all_reduce_perf
+#
+
