@@ -83,3 +83,78 @@ bash benchmarks/run_nccl_sharp_test.sh --nodes gpu-dp-2jvzl-pqq7p,gpu-dp-2jvzl-d
   (`NCCL_ALGO=CollNetDirect` crashes with `ncclInvalidUsage`.)
 - **Recommendation**: Use `NCCL_NVLS_ENABLE=1` (unset `NCCL_ALGO`) for best performance.
   `NCCL_COLLNET_ENABLE` has no effect on this cluster.
+
+---
+
+## Scripts
+
+### `run_nccl_sharp_test.sh` — Interactive benchmark
+
+Runs all 4 NCCL configs sequentially, prints output to screen. Each config
+uses its own `srun` allocation so there are no Slurm step conflicts.
+
+```bash
+# Local (current node, 8 GPUs)
+bash benchmarks/run_nccl_sharp_test.sh
+
+# Multi-node
+bash benchmarks/run_nccl_sharp_test.sh --nodes gpu-dp-2jvzl-pqq7p,gpu-dp-2jvzl-ddjjs
+
+# Inside sbatch
+bash benchmarks/run_nccl_sharp_test.sh --nodes $SLURM_NODELIST
+```
+
+---
+
+### `slurm_nccl_benchmark.sh` — Slurm benchmark with node selection
+
+Flexible node targeting with 5 modes. Prints output to screen in real time.
+
+```bash
+# Local (no args) — current node, 8 GPUs, binary run directly (no srun)
+bash benchmarks/slurm_nccl_benchmark.sh
+
+# Single specific node
+bash benchmarks/slurm_nccl_benchmark.sh --node gpu-dp-2jvzl-pqq7p
+
+# Explicit node list
+bash benchmarks/slurm_nccl_benchmark.sh --nodes gpu-dp-2jvzl-pqq7p,gpu-dp-2jvzl-ddjjs
+
+# All nodes in cluster (auto-detected via sinfo)
+bash benchmarks/slurm_nccl_benchmark.sh --all
+
+# All cluster nodes EXCEPT specified
+bash benchmarks/slurm_nccl_benchmark.sh --exclude gpu-dp-2jvzl-ddjjs
+```
+
+**Output format** (matches `job_nccl_benchmark.sh` style):
+```
+[date] NCCL benchmark (LOCAL/CLUSTER) started
+  Node/Nodes  : ...
+  GPU Type    : H100
+  Total GPUs  : 8/16
+  Results dir : benchmarks/H100/results/<timestamp>/
+
+=== all_reduce_ring ===
+[nccl output...]
+
+=== all_reduce_nvls ===
+[nccl output...]
+
+=== SUMMARY — Peak busBW at largest message size ===
+Test                   Config               busBW (GB/s)
+----                   ------               ------------
+all_reduce             ring                       368.17
+all_reduce             nvls                       478.87
+all_reduce             collnet_sharp              367.85
+all_reduce             nvls_collnet               479.32
+
+[date] NCCL benchmark finished
+```
+
+**Implementation note**: On K8s clusters where `slurmd` runs as PID 1,
+multiple sequential `srun` steps within the same Slurm job cause
+`slurmstepd` zombie processes that block subsequent steps. This script
+avoids the issue by either:
+- Running directly (outside sbatch): each `srun` creates its own independent allocation
+- Using sbatch chained mode: one job per config via `--dependency=afterok`
