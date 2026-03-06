@@ -2,3 +2,10 @@
 #
 # See LICENCE.txt for license information
 /build
+
+# Local files
+nccl-tests
+run_nccl_sharp_test.sh
+
+# Result directories are ignored by default; explicitly git add to track
+benchmarks/*/results/
