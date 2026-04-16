@@ -1,0 +1,185 @@
+=== NCCL SendRecv P2P Benchmark — 8 Nodes (64 GPUs) ===
+Job ID: 79923
+Nodes: use3a-ss-b200-gpu-149 use3a-ss-b200-gpu-150 use3a-ss-b200-gpu-151 use3a-ss-b200-gpu-152 use3a-ss-b200-gpu-154 use3a-ss-b200-gpu-155 use3a-ss-b200-gpu-156 use3a-ss-b200-gpu-157 
+Date: Fri Apr 10 02:36:18 PM PDT 2026
+
+>>> SendRecv bandwidth sweep (1KB to 256MB) — 64 GPUs...
+# nThread 1 nGpus 1 minBytes 1024 maxBytes 268435456 step: 2(factor) warmup iters: 5 iters: 20 agg iters: 1 validation: 1 graph: 0
+#
+# Using devices
+#  Rank  0 Group  0 Pid 104312 on use3a-ss-b200-gpu-149 device  0 [0x17] NVIDIA B200
+#  Rank  1 Group  0 Pid 104313 on use3a-ss-b200-gpu-149 device  1 [0x3d] NVIDIA B200
+#  Rank  2 Group  0 Pid 104314 on use3a-ss-b200-gpu-149 device  2 [0x5f] NVIDIA B200
+#  Rank  3 Group  0 Pid 104315 on use3a-ss-b200-gpu-149 device  3 [0x70] NVIDIA B200
+#  Rank  4 Group  0 Pid 104316 on use3a-ss-b200-gpu-149 device  4 [0x97] NVIDIA B200
+#  Rank  5 Group  0 Pid 104317 on use3a-ss-b200-gpu-149 device  5 [0xba] NVIDIA B200
+#  Rank  6 Group  0 Pid 104318 on use3a-ss-b200-gpu-149 device  6 [0xdc] NVIDIA B200
+#  Rank  7 Group  0 Pid 104319 on use3a-ss-b200-gpu-149 device  7 [0xed] NVIDIA B200
+#  Rank  8 Group  0 Pid 103282 on use3a-ss-b200-gpu-150 device  0 [0x17] NVIDIA B200
+#  Rank  9 Group  0 Pid 103283 on use3a-ss-b200-gpu-150 device  1 [0x3d] NVIDIA B200
+#  Rank 10 Group  0 Pid 103284 on use3a-ss-b200-gpu-150 device  2 [0x5f] NVIDIA B200
+#  Rank 11 Group  0 Pid 103285 on use3a-ss-b200-gpu-150 device  3 [0x70] NVIDIA B200
+#  Rank 12 Group  0 Pid 103286 on use3a-ss-b200-gpu-150 device  4 [0x97] NVIDIA B200
+#  Rank 13 Group  0 Pid 103287 on use3a-ss-b200-gpu-150 device  5 [0xba] NVIDIA B200
+#  Rank 14 Group  0 Pid 103288 on use3a-ss-b200-gpu-150 device  6 [0xdc] NVIDIA B200
+#  Rank 15 Group  0 Pid 103289 on use3a-ss-b200-gpu-150 device  7 [0xed] NVIDIA B200
+#  Rank 16 Group  0 Pid 103974 on use3a-ss-b200-gpu-151 device  0 [0x17] NVIDIA B200
+#  Rank 17 Group  0 Pid 103975 on use3a-ss-b200-gpu-151 device  1 [0x3d] NVIDIA B200
+#  Rank 18 Group  0 Pid 103976 on use3a-ss-b200-gpu-151 device  2 [0x5f] NVIDIA B200
+#  Rank 19 Group  0 Pid 103977 on use3a-ss-b200-gpu-151 device  3 [0x70] NVIDIA B200
+#  Rank 20 Group  0 Pid 103978 on use3a-ss-b200-gpu-151 device  4 [0x97] NVIDIA B200
+#  Rank 21 Group  0 Pid 103979 on use3a-ss-b200-gpu-151 device  5 [0xba] NVIDIA B200
+#  Rank 22 Group  0 Pid 103980 on use3a-ss-b200-gpu-151 device  6 [0xdc] NVIDIA B200
+#  Rank 23 Group  0 Pid 103981 on use3a-ss-b200-gpu-151 device  7 [0xed] NVIDIA B200
+#  Rank 24 Group  0 Pid  82384 on use3a-ss-b200-gpu-152 device  0 [0x17] NVIDIA B200
+#  Rank 25 Group  0 Pid  82385 on use3a-ss-b200-gpu-152 device  1 [0x3d] NVIDIA B200
+#  Rank 26 Group  0 Pid  82386 on use3a-ss-b200-gpu-152 device  2 [0x5f] NVIDIA B200
+#  Rank 27 Group  0 Pid  82387 on use3a-ss-b200-gpu-152 device  3 [0x70] NVIDIA B200
+#  Rank 28 Group  0 Pid  82388 on use3a-ss-b200-gpu-152 device  4 [0x97] NVIDIA B200
+#  Rank 29 Group  0 Pid  82389 on use3a-ss-b200-gpu-152 device  5 [0xba] NVIDIA B200
+#  Rank 30 Group  0 Pid  82390 on use3a-ss-b200-gpu-152 device  6 [0xdc] NVIDIA B200
+#  Rank 31 Group  0 Pid  82391 on use3a-ss-b200-gpu-152 device  7 [0xed] NVIDIA B200
+#  Rank 32 Group  0 Pid 121794 on use3a-ss-b200-gpu-154 device  0 [0x17] NVIDIA B200
+#  Rank 33 Group  0 Pid 121795 on use3a-ss-b200-gpu-154 device  1 [0x3d] NVIDIA B200
+#  Rank 34 Group  0 Pid 121796 on use3a-ss-b200-gpu-154 device  2 [0x5f] NVIDIA B200
+#  Rank 35 Group  0 Pid 121797 on use3a-ss-b200-gpu-154 device  3 [0x70] NVIDIA B200
+#  Rank 36 Group  0 Pid 121798 on use3a-ss-b200-gpu-154 device  4 [0x97] NVIDIA B200
+#  Rank 37 Group  0 Pid 121799 on use3a-ss-b200-gpu-154 device  5 [0xba] NVIDIA B200
+#  Rank 38 Group  0 Pid 121800 on use3a-ss-b200-gpu-154 device  6 [0xdc] NVIDIA B200
+#  Rank 39 Group  0 Pid 121801 on use3a-ss-b200-gpu-154 device  7 [0xed] NVIDIA B200
+#  Rank 40 Group  0 Pid 115094 on use3a-ss-b200-gpu-155 device  0 [0x17] NVIDIA B200
+#  Rank 41 Group  0 Pid 115095 on use3a-ss-b200-gpu-155 device  1 [0x3d] NVIDIA B200
+#  Rank 42 Group  0 Pid 115096 on use3a-ss-b200-gpu-155 device  2 [0x5f] NVIDIA B200
+#  Rank 43 Group  0 Pid 115097 on use3a-ss-b200-gpu-155 device  3 [0x70] NVIDIA B200
+#  Rank 44 Group  0 Pid 115098 on use3a-ss-b200-gpu-155 device  4 [0x97] NVIDIA B200
+#  Rank 45 Group  0 Pid 115099 on use3a-ss-b200-gpu-155 device  5 [0xba] NVIDIA B200
+#  Rank 46 Group  0 Pid 115100 on use3a-ss-b200-gpu-155 device  6 [0xdc] NVIDIA B200
+#  Rank 47 Group  0 Pid 115101 on use3a-ss-b200-gpu-155 device  7 [0xed] NVIDIA B200
+#  Rank 48 Group  0 Pid 124722 on use3a-ss-b200-gpu-156 device  0 [0x17] NVIDIA B200
+#  Rank 49 Group  0 Pid 124723 on use3a-ss-b200-gpu-156 device  1 [0x3d] NVIDIA B200
+#  Rank 50 Group  0 Pid 124724 on use3a-ss-b200-gpu-156 device  2 [0x5f] NVIDIA B200
+#  Rank 51 Group  0 Pid 124725 on use3a-ss-b200-gpu-156 device  3 [0x70] NVIDIA B200
+#  Rank 52 Group  0 Pid 124726 on use3a-ss-b200-gpu-156 device  4 [0x97] NVIDIA B200
+#  Rank 53 Group  0 Pid 124727 on use3a-ss-b200-gpu-156 device  5 [0xba] NVIDIA B200
+#  Rank 54 Group  0 Pid 124728 on use3a-ss-b200-gpu-156 device  6 [0xdc] NVIDIA B200
+#  Rank 55 Group  0 Pid 124729 on use3a-ss-b200-gpu-156 device  7 [0xed] NVIDIA B200
+#  Rank 56 Group  0 Pid 116809 on use3a-ss-b200-gpu-157 device  0 [0x17] NVIDIA B200
+#  Rank 57 Group  0 Pid 116810 on use3a-ss-b200-gpu-157 device  1 [0x3d] NVIDIA B200
+#  Rank 58 Group  0 Pid 116811 on use3a-ss-b200-gpu-157 device  2 [0x5f] NVIDIA B200
+#  Rank 59 Group  0 Pid 116812 on use3a-ss-b200-gpu-157 device  3 [0x70] NVIDIA B200
+#  Rank 60 Group  0 Pid 116813 on use3a-ss-b200-gpu-157 device  4 [0x97] NVIDIA B200
+#  Rank 61 Group  0 Pid 116814 on use3a-ss-b200-gpu-157 device  5 [0xba] NVIDIA B200
+#  Rank 62 Group  0 Pid 116815 on use3a-ss-b200-gpu-157 device  6 [0xdc] NVIDIA B200
+#  Rank 63 Group  0 Pid 116816 on use3a-ss-b200-gpu-157 device  7 [0xed] NVIDIA B200
+NCCL version 2.29.7+cuda12.9
+#
+#                                                              out-of-place                       in-place          
+#       size         count      type   redop    root     time   algbw   busbw #wrong     time   algbw   busbw #wrong
+#        (B)    (elements)                               (us)  (GB/s)  (GB/s)            (us)  (GB/s)  (GB/s)       
+        1024           256     float     sum      -1    30.63    0.03    0.03      0    30.65    0.03    0.03    N/A
+        2048           512     float     sum      -1    31.18    0.07    0.07      0    30.92    0.07    0.07    N/A
+        4096          1024     float     sum      -1    31.22    0.13    0.13      0    28.47    0.14    0.14    N/A
+        8192          2048     float     sum      -1    30.40    0.27    0.27      0    28.12    0.29    0.29    N/A
+       16384          4096     float     sum      -1    28.07    0.58    0.58      0    32.70    0.50    0.50    N/A
+       32768          8192     float     sum      -1    32.97    0.99    0.99      0    33.00    0.99    0.99    N/A
+       65536         16384     float     sum      -1    40.99    1.60    1.60      0    40.10    1.63    1.63    N/A
+      131072         32768     float     sum      -1    43.17    3.04    3.04      0    43.02    3.05    3.05    N/A
+      262144         65536     float     sum      -1    46.26    5.67    5.67      0    44.44    5.90    5.90    N/A
+      524288        131072     float     sum      -1    57.83    9.07    9.07      0    57.02    9.19    9.19    N/A
+     1048576        262144     float     sum      -1    70.33   14.91   14.91      0    69.48   15.09   15.09    N/A
+     2097152        524288     float     sum      -1    105.4   19.90   19.90      0    104.1   20.15   20.15    N/A
+     4194304       1048576     float     sum      -1    179.1   23.42   23.42      0    177.7   23.60   23.60    N/A
+     8388608       2097152     float     sum      -1    328.3   25.55   25.55      0    326.0   25.73   25.73    N/A
+    16777216       4194304     float     sum      -1    641.9   26.14   26.14      0    640.5   26.19   26.19    N/A
+    33554432       8388608     float     sum      -1   1285.2   26.11   26.11      0   1284.8   26.12   26.12    N/A
+    67108864      16777216     float     sum      -1   2577.6   26.04   26.04      0   2573.2   26.08   26.08    N/A
+   134217728      33554432     float     sum      -1   5163.1   26.00   26.00      0   5161.5   26.00   26.00    N/A
+   268435456      67108864     float     sum      -1    10326   26.00   26.00      0    10334   25.98   25.98    N/A
+# Out of bounds values : 0 OK
+# Avg bus bandwidth    : 12.4275 
+#
+[1775857019.796164] [use3a-ss-b200-gpu-150:103282:0]           flush.c:57   UCX  ERROR req 0x5ed702ff8c40: error during flush: Connection reset by remote peer
+[1775857019.803967] [use3a-ss-b200-gpu-150:103286:0]           flush.c:57   UCX  ERROR req 0x5b3eebc03fc0: error during flush: Connection reset by remote peer
+[1775857019.819458] [use3a-ss-b200-gpu-150:103283:0]           flush.c:57   UCX  ERROR req 0x58bf62e31000: error during flush: Connection reset by remote peer
+
+
+>>> SendRecv at 64MB (405B activation tensor) — 64 GPUs...
+# nThread 1 nGpus 1 minBytes 67108864 maxBytes 67108864 step: 1048576(bytes) warmup iters: 5 iters: 50 agg iters: 1 validation: 1 graph: 0
+#
+# Using devices
+#  Rank  0 Group  0 Pid 104730 on use3a-ss-b200-gpu-149 device  0 [0x17] NVIDIA B200
+#  Rank  1 Group  0 Pid 104731 on use3a-ss-b200-gpu-149 device  1 [0x3d] NVIDIA B200
+#  Rank  2 Group  0 Pid 104732 on use3a-ss-b200-gpu-149 device  2 [0x5f] NVIDIA B200
+#  Rank  3 Group  0 Pid 104733 on use3a-ss-b200-gpu-149 device  3 [0x70] NVIDIA B200
+#  Rank  4 Group  0 Pid 104734 on use3a-ss-b200-gpu-149 device  4 [0x97] NVIDIA B200
+#  Rank  5 Group  0 Pid 104735 on use3a-ss-b200-gpu-149 device  5 [0xba] NVIDIA B200
+#  Rank  6 Group  0 Pid 104736 on use3a-ss-b200-gpu-149 device  6 [0xdc] NVIDIA B200
+#  Rank  7 Group  0 Pid 104737 on use3a-ss-b200-gpu-149 device  7 [0xed] NVIDIA B200
+#  Rank  8 Group  0 Pid 103674 on use3a-ss-b200-gpu-150 device  0 [0x17] NVIDIA B200
+#  Rank  9 Group  0 Pid 103675 on use3a-ss-b200-gpu-150 device  1 [0x3d] NVIDIA B200
+#  Rank 10 Group  0 Pid 103676 on use3a-ss-b200-gpu-150 device  2 [0x5f] NVIDIA B200
+#  Rank 11 Group  0 Pid 103677 on use3a-ss-b200-gpu-150 device  3 [0x70] NVIDIA B200
+#  Rank 12 Group  0 Pid 103678 on use3a-ss-b200-gpu-150 device  4 [0x97] NVIDIA B200
+#  Rank 13 Group  0 Pid 103679 on use3a-ss-b200-gpu-150 device  5 [0xba] NVIDIA B200
+#  Rank 14 Group  0 Pid 103680 on use3a-ss-b200-gpu-150 device  6 [0xdc] NVIDIA B200
+#  Rank 15 Group  0 Pid 103681 on use3a-ss-b200-gpu-150 device  7 [0xed] NVIDIA B200
+#  Rank 16 Group  0 Pid 104363 on use3a-ss-b200-gpu-151 device  0 [0x17] NVIDIA B200
+#  Rank 17 Group  0 Pid 104364 on use3a-ss-b200-gpu-151 device  1 [0x3d] NVIDIA B200
+#  Rank 18 Group  0 Pid 104365 on use3a-ss-b200-gpu-151 device  2 [0x5f] NVIDIA B200
+#  Rank 19 Group  0 Pid 104366 on use3a-ss-b200-gpu-151 device  3 [0x70] NVIDIA B200
+#  Rank 20 Group  0 Pid 104367 on use3a-ss-b200-gpu-151 device  4 [0x97] NVIDIA B200
+#  Rank 21 Group  0 Pid 104368 on use3a-ss-b200-gpu-151 device  5 [0xba] NVIDIA B200
+#  Rank 22 Group  0 Pid 104369 on use3a-ss-b200-gpu-151 device  6 [0xdc] NVIDIA B200
+#  Rank 23 Group  0 Pid 104370 on use3a-ss-b200-gpu-151 device  7 [0xed] NVIDIA B200
+#  Rank 24 Group  0 Pid  82772 on use3a-ss-b200-gpu-152 device  0 [0x17] NVIDIA B200
+#  Rank 25 Group  0 Pid  82773 on use3a-ss-b200-gpu-152 device  1 [0x3d] NVIDIA B200
+#  Rank 26 Group  0 Pid  82774 on use3a-ss-b200-gpu-152 device  2 [0x5f] NVIDIA B200
+#  Rank 27 Group  0 Pid  82775 on use3a-ss-b200-gpu-152 device  3 [0x70] NVIDIA B200
+#  Rank 28 Group  0 Pid  82776 on use3a-ss-b200-gpu-152 device  4 [0x97] NVIDIA B200
+#  Rank 29 Group  0 Pid  82777 on use3a-ss-b200-gpu-152 device  5 [0xba] NVIDIA B200
+#  Rank 30 Group  0 Pid  82778 on use3a-ss-b200-gpu-152 device  6 [0xdc] NVIDIA B200
+#  Rank 31 Group  0 Pid  82779 on use3a-ss-b200-gpu-152 device  7 [0xed] NVIDIA B200
+#  Rank 32 Group  0 Pid 122185 on use3a-ss-b200-gpu-154 device  0 [0x17] NVIDIA B200
+#  Rank 33 Group  0 Pid 122186 on use3a-ss-b200-gpu-154 device  1 [0x3d] NVIDIA B200
+#  Rank 34 Group  0 Pid 122187 on use3a-ss-b200-gpu-154 device  2 [0x5f] NVIDIA B200
+#  Rank 35 Group  0 Pid 122188 on use3a-ss-b200-gpu-154 device  3 [0x70] NVIDIA B200
+#  Rank 36 Group  0 Pid 122189 on use3a-ss-b200-gpu-154 device  4 [0x97] NVIDIA B200
+#  Rank 37 Group  0 Pid 122190 on use3a-ss-b200-gpu-154 device  5 [0xba] NVIDIA B200
+#  Rank 38 Group  0 Pid 122191 on use3a-ss-b200-gpu-154 device  6 [0xdc] NVIDIA B200
+#  Rank 39 Group  0 Pid 122192 on use3a-ss-b200-gpu-154 device  7 [0xed] NVIDIA B200
+#  Rank 40 Group  0 Pid 115484 on use3a-ss-b200-gpu-155 device  0 [0x17] NVIDIA B200
+#  Rank 41 Group  0 Pid 115485 on use3a-ss-b200-gpu-155 device  1 [0x3d] NVIDIA B200
+#  Rank 42 Group  0 Pid 115486 on use3a-ss-b200-gpu-155 device  2 [0x5f] NVIDIA B200
+#  Rank 43 Group  0 Pid 115487 on use3a-ss-b200-gpu-155 device  3 [0x70] NVIDIA B200
+#  Rank 44 Group  0 Pid 115488 on use3a-ss-b200-gpu-155 device  4 [0x97] NVIDIA B200
+#  Rank 45 Group  0 Pid 115489 on use3a-ss-b200-gpu-155 device  5 [0xba] NVIDIA B200
+#  Rank 46 Group  0 Pid 115490 on use3a-ss-b200-gpu-155 device  6 [0xdc] NVIDIA B200
+#  Rank 47 Group  0 Pid 115491 on use3a-ss-b200-gpu-155 device  7 [0xed] NVIDIA B200
+#  Rank 48 Group  0 Pid 125118 on use3a-ss-b200-gpu-156 device  0 [0x17] NVIDIA B200
+#  Rank 49 Group  0 Pid 125119 on use3a-ss-b200-gpu-156 device  1 [0x3d] NVIDIA B200
+#  Rank 50 Group  0 Pid 125120 on use3a-ss-b200-gpu-156 device  2 [0x5f] NVIDIA B200
+#  Rank 51 Group  0 Pid 125121 on use3a-ss-b200-gpu-156 device  3 [0x70] NVIDIA B200
+#  Rank 52 Group  0 Pid 125122 on use3a-ss-b200-gpu-156 device  4 [0x97] NVIDIA B200
+#  Rank 53 Group  0 Pid 125123 on use3a-ss-b200-gpu-156 device  5 [0xba] NVIDIA B200
+#  Rank 54 Group  0 Pid 125124 on use3a-ss-b200-gpu-156 device  6 [0xdc] NVIDIA B200
+#  Rank 55 Group  0 Pid 125125 on use3a-ss-b200-gpu-156 device  7 [0xed] NVIDIA B200
+#  Rank 56 Group  0 Pid 117202 on use3a-ss-b200-gpu-157 device  0 [0x17] NVIDIA B200
+#  Rank 57 Group  0 Pid 117203 on use3a-ss-b200-gpu-157 device  1 [0x3d] NVIDIA B200
+#  Rank 58 Group  0 Pid 117204 on use3a-ss-b200-gpu-157 device  2 [0x5f] NVIDIA B200
+#  Rank 59 Group  0 Pid 117205 on use3a-ss-b200-gpu-157 device  3 [0x70] NVIDIA B200
+#  Rank 60 Group  0 Pid 117206 on use3a-ss-b200-gpu-157 device  4 [0x97] NVIDIA B200
+#  Rank 61 Group  0 Pid 117207 on use3a-ss-b200-gpu-157 device  5 [0xba] NVIDIA B200
+#  Rank 62 Group  0 Pid 117208 on use3a-ss-b200-gpu-157 device  6 [0xdc] NVIDIA B200
+#  Rank 63 Group  0 Pid 117209 on use3a-ss-b200-gpu-157 device  7 [0xed] NVIDIA B200
+NCCL version 2.29.7+cuda12.9
+#
+#                                                              out-of-place                       in-place          
+#       size         count      type   redop    root     time   algbw   busbw #wrong     time   algbw   busbw #wrong
+#        (B)    (elements)                               (us)  (GB/s)  (GB/s)            (us)  (GB/s)  (GB/s)       
+    67108864      16777216     float     sum      -1   2629.5   25.52   25.52      0   2625.2   25.56   25.56    N/A
+# Out of bounds values : 0 OK
+# Avg bus bandwidth    : 25.5428 
+#
+[1775857080.286013] [use3a-ss-b200-gpu-149:104737:0]           flush.c:57   UCX  ERROR req 0x636b0f000140: error during flush: Connection reset by remote peer
+[1775857080.303320] [use3a-ss-b200-gpu-149:104735:0]           flush.c:57   UCX  ERROR req 0x5db2b8ad9cc0: error during flush: Connection reset by remote peer
+

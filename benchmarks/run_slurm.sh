@@ -25,12 +25,13 @@ GPU_TYPE=""
 MODE="local"
 NODES_ARG=""
 GPUS_PER_NODE=8
-PARTITION="${PARTITION:-gpu}"
+PARTITION="${PARTITION:-batch}"
 ACCOUNT="${ACCOUNT:-}"
 TIME_LIMIT="01:00:00"
-BINARY_PATH=""        # empty = use $PATH on compute nodes
-CONTAINER=""          # empty = native mode; set to sqsh/docker URI for Pyxis
-HPCX_INIT=""          # path to hpcx-init.sh, e.g. /opt/hpcx/hpcx-init.sh
+BINARY_PATH="/mnt/vast/dgxc-benchmarking-auto/nccl-tests/build"
+CONTAINER=""          # empty = native mode (default); set to sqsh/docker URI for Pyxis
+NCCL_LIB="/mnt/vast/dgxc-benchmarking-auto/nccl-libs/usr/lib/x86_64-linux-gnu"
+HPCX_INIT="/opt/hpcx/hpcx-init.sh"
 MIN_BYTES="1M"
 MAX_BYTES="8G"
 STEP_FACTOR=2
@@ -131,8 +132,10 @@ TOTAL_PROCS=$(( NNODES * GPUS_PER_NODE ))
 # ── GPU type & results dir ────────────────────────────────────────────────────
 [[ -z "$GPU_TYPE" ]] && GPU_TYPE=$(detect_gpu_type)
 TIMESTAMP="$(date +%Y%m%d_%H%M%S)"
-RESULTS_DIR="${BENCHMARKS_DIR}/${GPU_TYPE}/results/${TIMESTAMP}_slurm_${NNODES}nodes"
-[[ -z "$BASELINE_DIR" ]] && BASELINE_DIR="${BENCHMARKS_DIR}/${GPU_TYPE}/results/baseline_slurm"
+# Use shared filesystem for results so compute nodes can write output files
+RESULTS_BASE="${RESULTS_BASE:-/mnt/vast/dgxc-benchmarking-auto/nccl-results}"
+RESULTS_DIR="${RESULTS_BASE}/${GPU_TYPE}/${TIMESTAMP}_slurm_${NNODES}nodes"
+[[ -z "$BASELINE_DIR" ]] && BASELINE_DIR="${RESULTS_BASE}/${GPU_TYPE}/baseline_slurm"
 mkdir -p "$RESULTS_DIR"
 
 # ── binary prefix ─────────────────────────────────────────────────────────────
@@ -152,9 +155,9 @@ echo "  Iters:     ${WARMUP} warmup + ${ITERS} measured"
 echo "  Results:   ${RESULTS_DIR}"
 echo "======================================================"
 
-# For container (Pyxis/enroot) mode, ensure the local host is authenticated
-# so enroot can pull the image. No-op in native mode or if creds not set.
-[[ -n "$CONTAINER" ]] && registry_auth_local
+# For container mode with a docker URI (not a local sqsh file), ensure the
+# local host is authenticated so enroot can pull the image.
+[[ -n "$CONTAINER" && "$CONTAINER" != *.sqsh ]] && registry_auth_local
 
 TOTAL=${#NCCL_TEST_MATRIX[@]}
 PASSED=0
@@ -188,7 +191,7 @@ run_test() {
     [[ -n "$ACCOUNT" ]]      && account_line="#SBATCH --account=${ACCOUNT}"
     [[ -n "$HPCX_INIT" ]]    && hpcx_line="source ${HPCX_INIT} && hpcx_load"
     if [[ -n "$CONTAINER" ]]; then
-        container_args="--container-image=${CONTAINER} --container-mounts=/run/mellanox:/run/mellanox"
+        container_args="--container-image=${CONTAINER} --container-mounts=/run/mellanox:/run/mellanox --no-container-mount-home"
     fi
 
     local sbatch_script
@@ -204,16 +207,17 @@ run_test() {
 #SBATCH --output=${outfile}
 #SBATCH --time=${TIME_LIMIT}
 #SBATCH --exclusive
+#SBATCH --chdir=/tmp
 ${nodelist_line}
 ${account_line}
 
 ${hpcx_line}
+export LD_LIBRARY_PATH=${NCCL_LIB}:\${LD_LIBRARY_PATH}
 
 ${nccl_env}
 
-srun --mpi=pmix ${container_args} \\
-    ${binary} \\
-    -b ${MIN_BYTES} -e ${MAX_BYTES} -f ${STEP_FACTOR} \\
+srun --mpi=pmix ${container_args} ${binary} \
+    -b ${MIN_BYTES} -e ${MAX_BYTES} -f ${STEP_FACTOR} \
     -g 1 -n ${ITERS} -w ${WARMUP}
 EOF
 )
@@ -263,6 +267,6 @@ echo "Results: ${RESULTS_DIR}"
 
 if [[ $DRY_RUN -eq 0 && $SET_BASELINE -eq 1 ]]; then
     ln -sfn "$(basename "${RESULTS_DIR}")" \
-        "${BENCHMARKS_DIR}/${GPU_TYPE}/results/baseline_slurm"
+        "${RESULTS_BASE}/${GPU_TYPE}/baseline_slurm"
     echo "Baseline updated -> ${RESULTS_DIR}"
 fi

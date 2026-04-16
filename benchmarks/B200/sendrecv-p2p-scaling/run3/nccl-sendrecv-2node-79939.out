@@ -1,0 +1,86 @@
+=== NCCL SendRecv P2P Benchmark — 2 Nodes (16 GPUs) ===
+Job ID: 79939
+Nodes: use3a-ss-b200-gpu-145 use3a-ss-b200-gpu-146 
+Date: Fri Apr 10 04:54:23 PM PDT 2026
+
+>>> SendRecv bandwidth sweep (1KB to 256MB) — 16 GPUs...
+# nThread 1 nGpus 1 minBytes 1024 maxBytes 268435456 step: 2(factor) warmup iters: 5 iters: 20 agg iters: 1 validation: 1 graph: 0
+#
+# Using devices
+#  Rank  0 Group  0 Pid 185294 on use3a-ss-b200-gpu-145 device  0 [0x17] NVIDIA B200
+#  Rank  1 Group  0 Pid 185295 on use3a-ss-b200-gpu-145 device  1 [0x3d] NVIDIA B200
+#  Rank  2 Group  0 Pid 185296 on use3a-ss-b200-gpu-145 device  2 [0x5f] NVIDIA B200
+#  Rank  3 Group  0 Pid 185297 on use3a-ss-b200-gpu-145 device  3 [0x70] NVIDIA B200
+#  Rank  4 Group  0 Pid 185298 on use3a-ss-b200-gpu-145 device  4 [0x97] NVIDIA B200
+#  Rank  5 Group  0 Pid 185299 on use3a-ss-b200-gpu-145 device  5 [0xba] NVIDIA B200
+#  Rank  6 Group  0 Pid 185300 on use3a-ss-b200-gpu-145 device  6 [0xdc] NVIDIA B200
+#  Rank  7 Group  0 Pid 185301 on use3a-ss-b200-gpu-145 device  7 [0xed] NVIDIA B200
+#  Rank  8 Group  0 Pid 145621 on use3a-ss-b200-gpu-146 device  0 [0x17] NVIDIA B200
+#  Rank  9 Group  0 Pid 145622 on use3a-ss-b200-gpu-146 device  1 [0x3d] NVIDIA B200
+#  Rank 10 Group  0 Pid 145623 on use3a-ss-b200-gpu-146 device  2 [0x5f] NVIDIA B200
+#  Rank 11 Group  0 Pid 145624 on use3a-ss-b200-gpu-146 device  3 [0x70] NVIDIA B200
+#  Rank 12 Group  0 Pid 145625 on use3a-ss-b200-gpu-146 device  4 [0x97] NVIDIA B200
+#  Rank 13 Group  0 Pid 145626 on use3a-ss-b200-gpu-146 device  5 [0xba] NVIDIA B200
+#  Rank 14 Group  0 Pid 145627 on use3a-ss-b200-gpu-146 device  6 [0xdc] NVIDIA B200
+#  Rank 15 Group  0 Pid 145628 on use3a-ss-b200-gpu-146 device  7 [0xed] NVIDIA B200
+NCCL version 2.29.7+cuda12.9
+#
+#                                                              out-of-place                       in-place          
+#       size         count      type   redop    root     time   algbw   busbw #wrong     time   algbw   busbw #wrong
+#        (B)    (elements)                               (us)  (GB/s)  (GB/s)            (us)  (GB/s)  (GB/s)       
+        1024           256     float     sum      -1    35.00    0.03    0.03      0    26.42    0.04    0.04    N/A
+        2048           512     float     sum      -1    30.33    0.07    0.07      0    31.68    0.06    0.06    N/A
+        4096          1024     float     sum      -1    27.79    0.15    0.15      0    28.64    0.14    0.14    N/A
+        8192          2048     float     sum      -1    31.09    0.26    0.26      0    19.34    0.42    0.42    N/A
+       16384          4096     float     sum      -1    23.35    0.70    0.70      0    29.47    0.56    0.56    N/A
+       32768          8192     float     sum      -1    25.51    1.28    1.28      0    23.99    1.37    1.37    N/A
+       65536         16384     float     sum      -1    35.70    1.84    1.84      0    39.45    1.66    1.66    N/A
+      131072         32768     float     sum      -1    41.41    3.17    3.17      0    39.20    3.34    3.34    N/A
+      262144         65536     float     sum      -1    46.86    5.59    5.59      0    45.13    5.81    5.81    N/A
+      524288        131072     float     sum      -1    52.31   10.02   10.02      0    48.44   10.82   10.82    N/A
+     1048576        262144     float     sum      -1    58.22   18.01   18.01      0    55.16   19.01   19.01    N/A
+     2097152        524288     float     sum      -1    79.12   26.51   26.51      0    81.98   25.58   25.58    N/A
+     4194304       1048576     float     sum      -1    121.6   34.51   34.51      0    126.8   33.09   33.09    N/A
+     8388608       2097152     float     sum      -1    214.8   39.05   39.05      0    210.4   39.86   39.86    N/A
+    16777216       4194304     float     sum      -1    400.8   41.85   41.85      0    397.5   42.20   42.20    N/A
+    33554432       8388608     float     sum      -1    791.7   42.38   42.38      0    786.2   42.68   42.68    N/A
+    67108864      16777216     float     sum      -1   1567.4   42.82   42.82      0   1573.1   42.66   42.66    N/A
+   134217728      33554432     float     sum      -1   3110.4   43.15   43.15      0   3115.1   43.09   43.09    N/A
+   268435456      67108864     float     sum      -1   6222.2   43.14   43.14      0   6217.5   43.17   43.17    N/A
+# Out of bounds values : 0 OK
+# Avg bus bandwidth    : 18.6868 
+#
+
+
+>>> SendRecv at 64MB (405B activation tensor) — 16 GPUs...
+# nThread 1 nGpus 1 minBytes 67108864 maxBytes 67108864 step: 1048576(bytes) warmup iters: 5 iters: 50 agg iters: 1 validation: 1 graph: 0
+#
+# Using devices
+#  Rank  0 Group  0 Pid 185693 on use3a-ss-b200-gpu-145 device  0 [0x17] NVIDIA B200
+#  Rank  1 Group  0 Pid 185694 on use3a-ss-b200-gpu-145 device  1 [0x3d] NVIDIA B200
+#  Rank  2 Group  0 Pid 185695 on use3a-ss-b200-gpu-145 device  2 [0x5f] NVIDIA B200
+#  Rank  3 Group  0 Pid 185696 on use3a-ss-b200-gpu-145 device  3 [0x70] NVIDIA B200
+#  Rank  4 Group  0 Pid 185697 on use3a-ss-b200-gpu-145 device  4 [0x97] NVIDIA B200
+#  Rank  5 Group  0 Pid 185698 on use3a-ss-b200-gpu-145 device  5 [0xba] NVIDIA B200
+#  Rank  6 Group  0 Pid 185699 on use3a-ss-b200-gpu-145 device  6 [0xdc] NVIDIA B200
+#  Rank  7 Group  0 Pid 185700 on use3a-ss-b200-gpu-145 device  7 [0xed] NVIDIA B200
+#  Rank  8 Group  0 Pid 146013 on use3a-ss-b200-gpu-146 device  0 [0x17] NVIDIA B200
+#  Rank  9 Group  0 Pid 146014 on use3a-ss-b200-gpu-146 device  1 [0x3d] NVIDIA B200
+#  Rank 10 Group  0 Pid 146015 on use3a-ss-b200-gpu-146 device  2 [0x5f] NVIDIA B200
+#  Rank 11 Group  0 Pid 146016 on use3a-ss-b200-gpu-146 device  3 [0x70] NVIDIA B200
+#  Rank 12 Group  0 Pid 146017 on use3a-ss-b200-gpu-146 device  4 [0x97] NVIDIA B200
+#  Rank 13 Group  0 Pid 146018 on use3a-ss-b200-gpu-146 device  5 [0xba] NVIDIA B200
+#  Rank 14 Group  0 Pid 146019 on use3a-ss-b200-gpu-146 device  6 [0xdc] NVIDIA B200
+#  Rank 15 Group  0 Pid 146020 on use3a-ss-b200-gpu-146 device  7 [0xed] NVIDIA B200
+NCCL version 2.29.7+cuda12.9
+#
+#                                                              out-of-place                       in-place          
+#       size         count      type   redop    root     time   algbw   busbw #wrong     time   algbw   busbw #wrong
+#        (B)    (elements)                               (us)  (GB/s)  (GB/s)            (us)  (GB/s)  (GB/s)       
+    67108864      16777216     float     sum      -1   1606.3   41.78   41.78      0   1603.0   41.86   41.86    N/A
+# Out of bounds values : 0 OK
+# Avg bus bandwidth    : 41.8212 
+#
+
+
+=== 2-Node SendRecv Complete ===

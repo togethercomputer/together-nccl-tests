@@ -1,0 +1,101 @@
+=== NCCL SendRecv P2P Benchmark — 8 Nodes (64 GPUs) ===
+Job ID: 79941
+Nodes: use3a-ss-b200-gpu-209 use3a-ss-b200-gpu-210 use3a-ss-b200-gpu-211 use3a-ss-b200-gpu-212 use3a-ss-b200-gpu-213 use3a-ss-b200-gpu-214 use3a-ss-b200-gpu-215 use3a-ss-b200-gpu-216 
+Date: Fri Apr 10 04:58:10 PM PDT 2026
+
+>>> SendRecv bandwidth sweep (1KB to 256MB) — 64 GPUs...
+# nThread 1 nGpus 1 minBytes 1024 maxBytes 268435456 step: 2(factor) warmup iters: 5 iters: 20 agg iters: 1 validation: 1 graph: 0
+#
+# Using devices
+#  Rank  0 Group  0 Pid 156285 on use3a-ss-b200-gpu-209 device  0 [0x17] NVIDIA B200
+#  Rank  1 Group  0 Pid 156286 on use3a-ss-b200-gpu-209 device  1 [0x3d] NVIDIA B200
+#  Rank  2 Group  0 Pid 156287 on use3a-ss-b200-gpu-209 device  2 [0x5f] NVIDIA B200
+#  Rank  3 Group  0 Pid 156288 on use3a-ss-b200-gpu-209 device  3 [0x70] NVIDIA B200
+#  Rank  4 Group  0 Pid 156289 on use3a-ss-b200-gpu-209 device  4 [0x97] NVIDIA B200
+#  Rank  5 Group  0 Pid 156290 on use3a-ss-b200-gpu-209 device  5 [0xba] NVIDIA B200
+#  Rank  6 Group  0 Pid 156291 on use3a-ss-b200-gpu-209 device  6 [0xdc] NVIDIA B200
+#  Rank  7 Group  0 Pid 156292 on use3a-ss-b200-gpu-209 device  7 [0xed] NVIDIA B200
+#  Rank  8 Group  0 Pid 158185 on use3a-ss-b200-gpu-210 device  0 [0x17] NVIDIA B200
+#  Rank  9 Group  0 Pid 158186 on use3a-ss-b200-gpu-210 device  1 [0x3d] NVIDIA B200
+#  Rank 10 Group  0 Pid 158187 on use3a-ss-b200-gpu-210 device  2 [0x5f] NVIDIA B200
+#  Rank 11 Group  0 Pid 158188 on use3a-ss-b200-gpu-210 device  3 [0x70] NVIDIA B200
+#  Rank 12 Group  0 Pid 158189 on use3a-ss-b200-gpu-210 device  4 [0x97] NVIDIA B200
+#  Rank 13 Group  0 Pid 158190 on use3a-ss-b200-gpu-210 device  5 [0xba] NVIDIA B200
+#  Rank 14 Group  0 Pid 158191 on use3a-ss-b200-gpu-210 device  6 [0xdc] NVIDIA B200
+#  Rank 15 Group  0 Pid 158192 on use3a-ss-b200-gpu-210 device  7 [0xed] NVIDIA B200
+#  Rank 16 Group  0 Pid 149526 on use3a-ss-b200-gpu-211 device  0 [0x17] NVIDIA B200
+#  Rank 17 Group  0 Pid 149527 on use3a-ss-b200-gpu-211 device  1 [0x3d] NVIDIA B200
+#  Rank 18 Group  0 Pid 149528 on use3a-ss-b200-gpu-211 device  2 [0x5f] NVIDIA B200
+#  Rank 19 Group  0 Pid 149529 on use3a-ss-b200-gpu-211 device  3 [0x70] NVIDIA B200
+#  Rank 20 Group  0 Pid 149530 on use3a-ss-b200-gpu-211 device  4 [0x97] NVIDIA B200
+#  Rank 21 Group  0 Pid 149531 on use3a-ss-b200-gpu-211 device  5 [0xba] NVIDIA B200
+#  Rank 22 Group  0 Pid 149532 on use3a-ss-b200-gpu-211 device  6 [0xdc] NVIDIA B200
+#  Rank 23 Group  0 Pid 149533 on use3a-ss-b200-gpu-211 device  7 [0xed] NVIDIA B200
+#  Rank 24 Group  0 Pid 129941 on use3a-ss-b200-gpu-212 device  0 [0x17] NVIDIA B200
+#  Rank 25 Group  0 Pid 129942 on use3a-ss-b200-gpu-212 device  1 [0x3d] NVIDIA B200
+#  Rank 26 Group  0 Pid 129943 on use3a-ss-b200-gpu-212 device  2 [0x5f] NVIDIA B200
+#  Rank 27 Group  0 Pid 129944 on use3a-ss-b200-gpu-212 device  3 [0x70] NVIDIA B200
+#  Rank 28 Group  0 Pid 129945 on use3a-ss-b200-gpu-212 device  4 [0x97] NVIDIA B200
+#  Rank 29 Group  0 Pid 129946 on use3a-ss-b200-gpu-212 device  5 [0xba] NVIDIA B200
+#  Rank 30 Group  0 Pid 129947 on use3a-ss-b200-gpu-212 device  6 [0xdc] NVIDIA B200
+#  Rank 31 Group  0 Pid 129948 on use3a-ss-b200-gpu-212 device  7 [0xed] NVIDIA B200
+#  Rank 32 Group  0 Pid 166678 on use3a-ss-b200-gpu-213 device  0 [0x17] NVIDIA B200
+#  Rank 33 Group  0 Pid 166679 on use3a-ss-b200-gpu-213 device  1 [0x3d] NVIDIA B200
+#  Rank 34 Group  0 Pid 166680 on use3a-ss-b200-gpu-213 device  2 [0x5f] NVIDIA B200
+#  Rank 35 Group  0 Pid 166681 on use3a-ss-b200-gpu-213 device  3 [0x70] NVIDIA B200
+#  Rank 36 Group  0 Pid 166682 on use3a-ss-b200-gpu-213 device  4 [0x97] NVIDIA B200
+#  Rank 37 Group  0 Pid 166683 on use3a-ss-b200-gpu-213 device  5 [0xba] NVIDIA B200
+#  Rank 38 Group  0 Pid 166684 on use3a-ss-b200-gpu-213 device  6 [0xdc] NVIDIA B200
+#  Rank 39 Group  0 Pid 166685 on use3a-ss-b200-gpu-213 device  7 [0xed] NVIDIA B200
+#  Rank 40 Group  0 Pid 167860 on use3a-ss-b200-gpu-214 device  0 [0x17] NVIDIA B200
+#  Rank 41 Group  0 Pid 167861 on use3a-ss-b200-gpu-214 device  1 [0x3d] NVIDIA B200
+#  Rank 42 Group  0 Pid 167862 on use3a-ss-b200-gpu-214 device  2 [0x5f] NVIDIA B200
+#  Rank 43 Group  0 Pid 167863 on use3a-ss-b200-gpu-214 device  3 [0x70] NVIDIA B200
+#  Rank 44 Group  0 Pid 167864 on use3a-ss-b200-gpu-214 device  4 [0x97] NVIDIA B200
+#  Rank 45 Group  0 Pid 167865 on use3a-ss-b200-gpu-214 device  5 [0xba] NVIDIA B200
+#  Rank 46 Group  0 Pid 167866 on use3a-ss-b200-gpu-214 device  6 [0xdc] NVIDIA B200
+#  Rank 47 Group  0 Pid 167867 on use3a-ss-b200-gpu-214 device  7 [0xed] NVIDIA B200
+#  Rank 48 Group  0 Pid 165677 on use3a-ss-b200-gpu-215 device  0 [0x17] NVIDIA B200
+#  Rank 49 Group  0 Pid 165678 on use3a-ss-b200-gpu-215 device  1 [0x3d] NVIDIA B200
+#  Rank 50 Group  0 Pid 165679 on use3a-ss-b200-gpu-215 device  2 [0x5f] NVIDIA B200
+#  Rank 51 Group  0 Pid 165680 on use3a-ss-b200-gpu-215 device  3 [0x70] NVIDIA B200
+#  Rank 52 Group  0 Pid 165681 on use3a-ss-b200-gpu-215 device  4 [0x97] NVIDIA B200
+#  Rank 53 Group  0 Pid 165682 on use3a-ss-b200-gpu-215 device  5 [0xba] NVIDIA B200
+#  Rank 54 Group  0 Pid 165683 on use3a-ss-b200-gpu-215 device  6 [0xdc] NVIDIA B200
+#  Rank 55 Group  0 Pid 165684 on use3a-ss-b200-gpu-215 device  7 [0xed] NVIDIA B200
+#  Rank 56 Group  0 Pid 168709 on use3a-ss-b200-gpu-216 device  0 [0x17] NVIDIA B200
+#  Rank 57 Group  0 Pid 168710 on use3a-ss-b200-gpu-216 device  1 [0x3d] NVIDIA B200
+#  Rank 58 Group  0 Pid 168711 on use3a-ss-b200-gpu-216 device  2 [0x5f] NVIDIA B200
+#  Rank 59 Group  0 Pid 168712 on use3a-ss-b200-gpu-216 device  3 [0x70] NVIDIA B200
+#  Rank 60 Group  0 Pid 168713 on use3a-ss-b200-gpu-216 device  4 [0x97] NVIDIA B200
+#  Rank 61 Group  0 Pid 168714 on use3a-ss-b200-gpu-216 device  5 [0xba] NVIDIA B200
+#  Rank 62 Group  0 Pid 168715 on use3a-ss-b200-gpu-216 device  6 [0xdc] NVIDIA B200
+#  Rank 63 Group  0 Pid 168716 on use3a-ss-b200-gpu-216 device  7 [0xed] NVIDIA B200
+NCCL version 2.29.7+cuda12.9
+#
+#                                                              out-of-place                       in-place          
+#       size         count      type   redop    root     time   algbw   busbw #wrong     time   algbw   busbw #wrong
+#        (B)    (elements)                               (us)  (GB/s)  (GB/s)            (us)  (GB/s)  (GB/s)       
+        1024           256     float     sum      -1    29.62    0.03    0.03      0    31.42    0.03    0.03    N/A
+        2048           512     float     sum      -1    30.14    0.07    0.07      0    27.23    0.08    0.08    N/A
+        4096          1024     float     sum      -1    29.74    0.14    0.14      0    30.16    0.14    0.14    N/A
+        8192          2048     float     sum      -1    30.57    0.27    0.27      0    30.06    0.27    0.27    N/A
+       16384          4096     float     sum      -1    31.40    0.52    0.52      0    31.91    0.51    0.51    N/A
+       32768          8192     float     sum      -1    33.74    0.97    0.97      0    32.67    1.00    1.00    N/A
+       65536         16384     float     sum      -1    38.96    1.68    1.68      0    39.97    1.64    1.64    N/A
+      131072         32768     float     sum      -1    43.89    2.99    2.99      0    43.28    3.03    3.03    N/A
+      262144         65536     float     sum      -1    45.66    5.74    5.74      0    44.15    5.94    5.94    N/A
+      524288        131072     float     sum      -1    56.23    9.32    9.32      0    53.52    9.80    9.80    N/A
+     1048576        262144     float     sum      -1    67.58   15.52   15.52      0    66.16   15.85   15.85    N/A
+     2097152        524288     float     sum      -1    104.2   20.12   20.12      0    102.3   20.50   20.50    N/A
+     4194304       1048576     float     sum      -1    178.1   23.55   23.55      0    178.2   23.53   23.53    N/A
+     8388608       2097152     float     sum      -1    329.4   25.47   25.47      0    327.1   25.65   25.65    N/A
+    16777216       4194304     float     sum      -1    641.2   26.16   26.16      0    641.6   26.15   26.15    N/A
+    33554432       8388608     float     sum      -1   1281.2   26.19   26.19      0   1278.3   26.25   26.25    N/A
+    67108864      16777216     float     sum      -1   2560.0   26.21   26.21      0   2561.5   26.20   26.20    N/A
+   134217728      33554432     float     sum      -1   5131.2   26.16   26.16      0   5136.0   26.13   26.13    N/A
+   268435456      67108864     float     sum      -1    10275   26.13   26.13      0    10273   26.13   26.13    N/A
+# Out of bounds values : 0 OK
+# Avg bus bandwidth    : 12.528 
+#
+
