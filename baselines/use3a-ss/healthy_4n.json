@@ -1,0 +1,31 @@
+{
+  "cluster": "use3a-ss",
+  "group_size": 4,
+  "sizes": "2G-16G factor=2",
+  "iters": "5w+20m",
+  "updated_utc": "2026-04-28T19:21:45.959671+00:00",
+  "source": "trimmed quartile from 20260428_191844",
+  "z_thresholds": {
+    "suspect": 2.0,
+    "severe": 5.0
+  },
+  "stddev_floor_frac": 0.005,
+  "algos": {
+    "ring": {
+      "median_busbw_gbs": 332.684,
+      "stddev_busbw_gbs": 0.236968059263507,
+      "n_samples": 9,
+      "trimmed_from": 15,
+      "min": 332.286,
+      "max": 332.954
+    },
+    "collnet_sharp": {
+      "median_busbw_gbs": 514.47,
+      "stddev_busbw_gbs": 1.2036927556482178,
+      "n_samples": 9,
+      "trimmed_from": 15,
+      "min": 511.47,
+      "max": 515.359
+    }
+  }
+}
