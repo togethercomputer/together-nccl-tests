@@ -213,6 +213,20 @@ ${account_line}
 
 ${hpcx_line}
 export LD_LIBRARY_PATH=${NCCL_LIB}:\${LD_LIBRARY_PATH}
+# Unlock IB memory registration — required for NCCL IB/NVLS at scale.
+# No-op if the cluster enforces the limit; works automatically once admin sets
+# LimitMEMLOCK=infinity in the Slurm cgroup config.
+ulimit -l unlimited 2>/dev/null || true
+# Route MPI/UCX bootstrap through shared-mem + TCP (IB requires ulimit -l unlimited,
+# blocked in K8s pods). NCCL owns actual data movement via NVLink/IB directly.
+export UCX_TLS=self,sm,cuda_ipc,cuda_copy,tcp
+export UCX_NET_DEVICES=eth0
+export OMPI_MCA_btl_tcp_if_include=eth0
+export NCCL_SOCKET_IFNAME=eth0
+export NCCL_TIMEOUT=300
+export CUDA_DEVICE_MAX_CONNECTIONS=32
+# Restrict to IB/SHARP HCAs only; mlx5_8 absent, mlx5_13 is RoCE — both excluded.
+export NCCL_IB_HCA="=mlx5_0:1,mlx5_1:1,mlx5_2:1,mlx5_3:1,mlx5_4:1,mlx5_5:1,mlx5_6:1,mlx5_7:1,mlx5_9:1,mlx5_10:1,mlx5_11:1,mlx5_12:1"
 
 ${nccl_env}
 
