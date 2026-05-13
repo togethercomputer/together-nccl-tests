@@ -225,8 +225,9 @@ export OMPI_MCA_btl_tcp_if_include=eth0
 export NCCL_SOCKET_IFNAME=eth0
 export NCCL_TIMEOUT=300
 export CUDA_DEVICE_MAX_CONNECTIONS=32
-# Restrict to IB/SHARP HCAs only; mlx5_8 absent, mlx5_13 is RoCE — both excluded.
-export NCCL_IB_HCA="=mlx5_0:1,mlx5_1:1,mlx5_2:1,mlx5_3:1,mlx5_4:1,mlx5_5:1,mlx5_6:1,mlx5_7:1,mlx5_9:1,mlx5_10:1,mlx5_11:1,mlx5_12:1"
+# Restrict to the 8 RDMA-capable HCAs on slinky B200 nodes.
+# mlx5_0-3, mlx5_8, mlx5_13 are NVSwitch/non-RDMA and must be excluded for SHARP.
+export NCCL_IB_HCA="=mlx5_4:1,mlx5_5:1,mlx5_6:1,mlx5_7:1,mlx5_9:1,mlx5_10:1,mlx5_11:1,mlx5_12:1"
 
 ${nccl_env}
 
