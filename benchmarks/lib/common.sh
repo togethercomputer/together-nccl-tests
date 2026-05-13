@@ -125,6 +125,16 @@ NCCL_TEST_MATRIX=(
     "reduce_scatter:collnet_sharp::0:1"
 )
 
+# Filter matrix to a single test type via NCCL_TESTS env var (e.g. NCCL_TESTS=all_reduce)
+if [[ -n "${NCCL_TESTS:-}" ]]; then
+    _filtered=()
+    for _entry in "${NCCL_TEST_MATRIX[@]}"; do
+        [[ "${_entry%%:*}" == "$NCCL_TESTS" ]] && _filtered+=("$_entry")
+    done
+    NCCL_TEST_MATRIX=("${_filtered[@]}")
+    unset _filtered _entry
+fi
+
 # ── GPU type detection ────────────────────────────────────────────────────────
 detect_gpu_type() {
     local name="" raw
