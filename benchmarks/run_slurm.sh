@@ -225,9 +225,22 @@ export OMPI_MCA_btl_tcp_if_include=eth0
 export NCCL_SOCKET_IFNAME=eth0
 export NCCL_TIMEOUT=300
 export CUDA_DEVICE_MAX_CONNECTIONS=32
-# Restrict to the 8 RDMA-capable HCAs on slinky B200 nodes.
-# mlx5_0-3, mlx5_8, mlx5_13 are NVSwitch/non-RDMA and must be excluded for SHARP.
-export NCCL_IB_HCA="=mlx5_4:1,mlx5_5:1,mlx5_6:1,mlx5_7:1,mlx5_9:1,mlx5_10:1,mlx5_11:1,mlx5_12:1"
+# Restrict to the 8 compute rails on slinky B200 nodes: the eight 400G NDR
+# InfiniBand ports. Verified 2026-07-11 via /sys/class/infiniband/*/ports/1/{rate,link_layer}.
+# NOTE: the fabric state drifts. The prior list (mlx5_4,5,6,7,9,10,11,12) was healthy in
+# May 2026 (390 GB/s @8n) but by 2026-07-11 mlx5_5 had flipped to Ethernet/200G and
+# mlx5_9,10,11 trained down to 100G HDR, halving inter-node BW (192 vs ~310 GB/s @4n).
+# Re-verify rate/link_layer before trusting numbers; ideally auto-detect the 400G IB ports.
+export NCCL_IB_HCA="=mlx5_1:1,mlx5_2:1,mlx5_3:1,mlx5_4:1,mlx5_6:1,mlx5_7:1,mlx5_12:1,mlx5_13:1"
+# Vendor NCCL IB tuning (from the validated slinky working-config, 2026-05-09).
+# Without these, ring/NVLS inter-node busbw is ~20-25% below the fabric's real capability
+# (measured 2026-07-11: 4n ring 307 -> 384 GB/s @8GiB with these set; matches historical 389).
+# QPS_PER_CONNECTION=2 + AR_THRESHOLD=0 are the ring-critical ones. SHARP is unaffected.
+export NCCL_IB_QPS_PER_CONNECTION=2
+export NCCL_IB_SPLIT_DATA_ON_QPS=0
+export NCCL_IB_AR_THRESHOLD=0
+export NCCL_IB_PCI_RELAXED_ORDERING=1
+export NCCL_IGNORE_CPU_AFFINITY=1
 
 ${nccl_env}
 
