@@ -1,0 +1,76 @@
+srun: job 200 queued and waiting for resources
+srun: job 200 has been allocated resources
+# nccl-tests version 2.17.9 nccl-headers=22602 nccl-library=22602
+# Collective test starting: all_reduce_perf
+# nThread 1 nGpus 8 minBytes 1048576 maxBytes 8589934592 step: 2(factor) warmup iters: 5 iters: 20 agg iters: 1 validation: 1 graph: 0
+#
+# Using devices
+# nccl-tests version 2.17.9 nccl-headers=22602 nccl-library=22602
+# Collective test starting: all_reduce_perf
+# nThread 1 nGpus 8 minBytes 1048576 maxBytes 8589934592 step: 2(factor) warmup iters: 5 iters: 20 agg iters: 1 validation: 1 graph: 0
+#
+# Using devices
+#  Rank  0 Group  0 Pid 1723926 on gpu-dp-2jvzl-pqq7p device  0 [0000:29:00] NVIDIA H100 80GB HBM3
+#  Rank  1 Group  0 Pid 1723926 on gpu-dp-2jvzl-pqq7p device  1 [0000:2f:00] NVIDIA H100 80GB HBM3
+#  Rank  2 Group  0 Pid 1723926 on gpu-dp-2jvzl-pqq7p device  2 [0000:35:00] NVIDIA H100 80GB HBM3
+#  Rank  3 Group  0 Pid 1723926 on gpu-dp-2jvzl-pqq7p device  3 [0000:3b:00] NVIDIA H100 80GB HBM3
+#  Rank  4 Group  0 Pid 1723926 on gpu-dp-2jvzl-pqq7p device  4 [0000:43:00] NVIDIA H100 80GB HBM3
+#  Rank  5 Group  0 Pid 1723926 on gpu-dp-2jvzl-pqq7p device  5 [0000:49:00] NVIDIA H100 80GB HBM3
+#  Rank  6 Group  0 Pid 1723926 on gpu-dp-2jvzl-pqq7p device  6 [0000:4f:00] NVIDIA H100 80GB HBM3
+#  Rank  7 Group  0 Pid 1723926 on gpu-dp-2jvzl-pqq7p device  7 [0000:55:00] NVIDIA H100 80GB HBM3
+#  Rank  0 Group  0 Pid 369312 on gpu-dp-2jvzl-ddjjs device  0 [0000:29:00] NVIDIA H100 80GB HBM3
+#  Rank  1 Group  0 Pid 369312 on gpu-dp-2jvzl-ddjjs device  1 [0000:2f:00] NVIDIA H100 80GB HBM3
+#  Rank  2 Group  0 Pid 369312 on gpu-dp-2jvzl-ddjjs device  2 [0000:35:00] NVIDIA H100 80GB HBM3
+#  Rank  3 Group  0 Pid 369312 on gpu-dp-2jvzl-ddjjs device  3 [0000:3b:00] NVIDIA H100 80GB HBM3
+#  Rank  4 Group  0 Pid 369312 on gpu-dp-2jvzl-ddjjs device  4 [0000:43:00] NVIDIA H100 80GB HBM3
+#  Rank  5 Group  0 Pid 369312 on gpu-dp-2jvzl-ddjjs device  5 [0000:49:00] NVIDIA H100 80GB HBM3
+#  Rank  6 Group  0 Pid 369312 on gpu-dp-2jvzl-ddjjs device  6 [0000:4f:00] NVIDIA H100 80GB HBM3
+#  Rank  7 Group  0 Pid 369312 on gpu-dp-2jvzl-ddjjs device  7 [0000:55:00] NVIDIA H100 80GB HBM3
+#
+#                                                              out-of-place                       in-place          
+#       size         count      type   redop    root     time   algbw   busbw  #wrong     time   algbw   busbw  #wrong 
+#        (B)    (elements)                               (us)  (GB/s)  (GB/s)             (us)  (GB/s)  (GB/s)         
+#
+#                                                              out-of-place                       in-place          
+#       size         count      type   redop    root     time   algbw   busbw  #wrong     time   algbw   busbw  #wrong 
+#        (B)    (elements)                               (us)  (GB/s)  (GB/s)             (us)  (GB/s)  (GB/s)         
+     1048576        262144     float     sum      -1    42.27   24.80   43.41       0    42.27   24.81   43.41       0
+     2097152        524288     float     sum      -1    43.65   48.04   84.07       0    43.89   47.78   83.62       0
+     4194304       1048576     float     sum      -1    55.62   75.41  131.97       0    55.24   75.93  132.88       0
+     1048576        262144     float     sum      -1    43.91   23.88   41.79       0    44.97   23.32   40.80       0
+     8388608       2097152     float     sum      -1    84.92   98.78  172.87       0    84.71   99.03  173.31       0
+     2097152        524288     float     sum      -1    43.67   48.02   84.04       0    45.63   45.96   80.44       0
+    16777216       4194304     float     sum      -1   125.25  133.95  234.41       0   124.21  135.07  236.38       0
+     4194304       1048576     float     sum      -1    55.67   75.35  131.85       0    56.11   74.75  130.82       0
+    33554432       8388608     float     sum      -1   200.87  167.04  292.33       0   199.32  168.35  294.61       0
+     8388608       2097152     float     sum      -1    84.68   99.07  173.37       0    84.28   99.53  174.18       0
+    67108864      16777216     float     sum      -1   326.82  205.34  359.34       0   325.95  205.89  360.30       0
+    16777216       4194304     float     sum      -1   125.37  133.82  234.19       0   125.30  133.90  234.32       0
+    33554432       8388608     float     sum      -1   200.37  167.47  293.07       0   200.31  167.52  293.15       0
+   134217728      33554432     float     sum      -1   588.33  228.13  399.23       0   587.15  228.59  400.04       0
+    67108864      16777216     float     sum      -1   327.22  205.09  358.90       0   326.93  205.27  359.22       0
+   268435456      67108864     float     sum      -1  1114.22  240.92  421.61       0  1113.62  241.05  421.83       0
+   134217728      33554432     float     sum      -1   587.41  228.49  399.86       0   587.54  228.44  399.77       0
+   268435456      67108864     float     sum      -1  1113.57  241.06  421.85       0  1112.49  241.29  422.26       0
+   536870912     134217728     float     sum      -1  2153.48  249.30  436.28       0  2150.87  249.61  436.81       0
+   536870912     134217728     float     sum      -1  2149.43  249.77  437.10       0  2150.68  249.63  436.85       0
+  1073741824     268435456     float     sum      -1  4021.29  267.01  467.27       0  4026.11  266.69  466.72       0
+  1073741824     268435456     float     sum      -1  4025.72  266.72  466.76       0  4027.20  266.62  466.59       0
+  2147483648     536870912     float     sum      -1  7953.99  269.99  472.48       0  7955.14  269.95  472.41       0
+  2147483648     536870912     float     sum      -1  7952.36  270.04  472.58       0  7952.95  270.02  472.54       0
+  4294967296    1073741824     float     sum      -1  15755.6  272.60  477.05       0  15803.9  271.77  475.59       0
+  4294967296    1073741824     float     sum      -1  15753.5  272.63  477.11       0  15755.5  272.60  477.05       0
+  8589934592    2147483648     float     sum      -1  31434.9  273.26  478.21       0  31374.0  273.79  479.14       0
+  8589934592    2147483648     float     sum      -1  31380.8  273.73  479.03       0  31348.0  274.02  479.53       0
+# Out of bounds values : 0 OK
+# Avg bus bandwidth    : 319.556 
+#
+# Collective test concluded: all_reduce_perf
+#
+
+# Out of bounds values : 0 OK
+# Avg bus bandwidth    : 319.251 
+#
+# Collective test concluded: all_reduce_perf
+#
+

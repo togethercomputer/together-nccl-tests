@@ -1,0 +1,18 @@
+{
+  "cluster": "flapping-airplanes",
+  "group_size": 2,
+  "sizes": "8G-8G factor=2",
+  "iters": "2w+5m",
+  "updated_utc": "2026-05-01T22:15:10.334816+00:00",
+  "source": "trimmed quartile from 20260501_221408",
+  "z_thresholds": {
+    "suspect": 2.0,
+    "severe": 5.0
+  },
+  "stddev_floor_frac": 0.005,
+  "ring": {
+    "median_busbw_gbs": 347.7565,
+    "stddev_busbw_gbs": 40.910930444555845,
+    "n_samples": 8
+  }
+}
